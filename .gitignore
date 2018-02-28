@@ -1,2 +1,11 @@
 # secrets.json
 secrets.json
+
+# temp
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
