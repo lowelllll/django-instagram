@@ -5,8 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-    post
+
     <a href="{% url 'auth:logout' %}">logout</a>
-    {{ user.username }}
+    <h1>{{ user.username }}</h1>
+    <a href="{% url 'post:post_create' %}">new_post</a>
+    <ul>
+        {%  if posts %}
+            {% for post in posts %}
+                <img src="{{ post.image.url }}" alt="image">
+                {{ post.content }}
+                {{ post.author }}
+                {{ post.date }}
+            {% endfor %}
+        {% endif %}
+    </ul>
 </body>
 </html>
