@@ -31,3 +31,12 @@ class Post(models.Model):
     # 좋아요
     # oauth
     # 연동
+
+@python_2_unicode_compatible
+class Reple(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.content

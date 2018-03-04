@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_home.html' %}
+{% block content %}
 <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
     {% if form.errors %}
         <script>
@@ -12,7 +7,4 @@
         </script>
     {% endif %}
     {{ form.as_table }}
-    <input type="submit" value="저장">
-</form>
-</body>
-</html>
+{% endblock %}
