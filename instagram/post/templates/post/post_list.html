@@ -1,7 +1,7 @@
 {% extends 'base_home.html' %}
 {% block content %}
     <a href="{% url 'auth:logout' %}">logout</a>
-    <h1>{{ user.username }}</h1>
+    <a href="{% url 'post:user_post_list' user.username %}"><h1>{{ user.username }}</h1></a>
     <a href="{% url 'post:post_create' %}">new_post</a>
 
     <ul>

@@ -1,7 +1,7 @@
 {% extends 'base_home.html' %}
     {% block content %}
     <img src="{{ post.image.url }}" alt="image">
-    {{ post.author }}
+<a href="{% url 'post:user_post_list' post.author.username %}">{{ post.author }}</a>
     {{ post.content }}
     {{ post.date }}
     <h2>댓글</h2>

@@ -9,7 +9,7 @@
 <body>
 <div id="wrap">
     <header>
-        <h1>instagram</h1>
+        <a href="{% url 'post:post_list' %}"><h1>instagram</h1></a>
         <form action="." method="post">
             <input type="text" placeholder="검색">
         </form>
@@ -17,5 +17,9 @@
     {% block content %}
     {% endblock %}
 </div>
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>{% block javascript %}
+    {% endblock %}</script>
+
 </body>
 </html>

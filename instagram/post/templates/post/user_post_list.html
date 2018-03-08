@@ -1,0 +1,47 @@
+{% extends 'base_home.html' %}
+{% block content %}
+    <h1>{{ author.username }}</h1>
+{% if author != user %}
+    {% if is_follow %}
+        <button type="button" id="unfollow">팔로우</button>
+    {% else %}
+        <!--<form action="{% url 'post:follow' author.username %}" method="post"> {% csrf_token %}-->
+            <!--<input type="submit" value="팔로잉">-->
+        <!--</form>-->
+        <button type="button" id="follow">팔로잉</button>
+    {% endif %}
+{% endif %}
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{{ post.get_absolute_url }}">
+                    <div>
+                        <img src="{{ post.image.url }}" alt="img">
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+{% block javascript %}
+    // 팔로우 기능
+    $("#follow").on("click",function(){
+        console.log("follow")
+        $.ajax({
+            url:'{% url "post:follow" author.username %}',
+            dataType:'json',
+            success: function(data){
+                location.href="{% url 'post:user_post_list' author.username %}";
+            }
+        });
+    });
+    $("#unfollow").on("click",function(){
+        $.ajax({
+            url:'{% url "post:unfollow" author.username %}',
+            dataType:'json',
+            success: function(data){
+                location.href="{% url 'post:user_post_list' author.username %}";
+            }
+        });
+    });
+{% endblock %}
