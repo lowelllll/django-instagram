@@ -2,15 +2,18 @@
 {% block content %}
     <h1>{{ author.username }}</h1>
 {% if author != user %}
-    {% if is_follow %}
+
         <button type="button" id="unfollow">팔로우</button>
-    {% else %}
-        <!--<form action="{% url 'post:follow' author.username %}" method="post"> {% csrf_token %}-->
-            <!--<input type="submit" value="팔로잉">-->
-        <!--</form>-->
         <button type="button" id="follow">팔로잉</button>
-    {% endif %}
+
+    <!--<button type="button" {% if is_follow %}id='unfollow'{% else %}id="follow"{% endif %}></button>-->
+    <div id="follow_zone">
+
+    </div>
 {% endif %}
+<h3>게시물 {{ posts|length }}</h3>
+<span class="follower_num">팔로우 {{ follower }}</span>
+<span class="folloing_num"> 팔로잉 {{ folloing }}</span>
     <ul>
         {% for post in posts %}
             <li>
@@ -22,16 +25,29 @@
             </li>
         {% endfor %}
     </ul>
+<p>If you click on the "Hide" button, I will disappear.</p>
+
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+
 {% endblock %}
 {% block javascript %}
-    // 팔로우 기능
+    var flag = '{{ is_follow }}'.toLowerCase();
+    if(flag=='true'){
+        $('#follow').css('display','none');
+    }else{
+         $('#unfollow').css('display','none');
+    }
+    // 팔로우 기능 효율성 더 높여야 함
     $("#follow").on("click",function(){
-        console.log("follow")
+        console.log("follow");
         $.ajax({
             url:'{% url "post:follow" author.username %}',
             dataType:'json',
             success: function(data){
-                location.href="{% url 'post:user_post_list' author.username %}";
+                $('#follow').css('display','none');
+                $('#unfollow').css('display','block');
+                $('.follower_num').text('팔로우 '+data.follow);
             }
         });
     });
@@ -40,7 +56,11 @@
             url:'{% url "post:unfollow" author.username %}',
             dataType:'json',
             success: function(data){
-                location.href="{% url 'post:user_post_list' author.username %}";
+
+                $('#unfollow').css('display','none');
+                $('#follow').css('display','block');
+                $('.follower_num').text('팔로우 '+data.follow);
+
             }
         });
     });

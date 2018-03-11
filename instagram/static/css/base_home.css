@@ -10,3 +10,11 @@ header h1{
 header form{
     float:left;
 }
+header h1 a{
+    display:inline-block;
+    width:176px;
+    height:35px;
+    background-size:350px;
+    background:url("../img/icon.png") no-repeat right bottom;
+    background-position:0 -228px;
+}
