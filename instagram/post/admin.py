@@ -4,3 +4,4 @@ from . models import *
 admin.site.register(Post)
 admin.site.register(Reple)
 admin.site.register(Follow)
+admin.site.register(Like)

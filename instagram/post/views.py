@@ -86,8 +86,6 @@ def user_post(request,author):
     return render(request,'post/user_post_list.html',context)
 
 @login_required()
-def follow(request,author):
-    Follow(folloing=request.user,follower=author).save()
 def post_follow(request,author):
     follow,flag = Follow.objects.get_or_create(follower=author,folloing=request.user)
     if not flag: # 원래 객체가 존재했다면

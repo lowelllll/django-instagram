@@ -4,6 +4,8 @@
 <a href="{% url 'post:user_post_list' post.author.username %}">{{ post.author }}</a>
     {{ post.content }}
     {{ post.date }}
+    좋아요 <a href="" id="like_count">{{ like|length }}</a>
+    <button type="button" id="like" {% if is_like %}class="like"{% else %}class="liked"{% endif %}>♥</button>
     <h2>댓글</h2>
     <ul>
         {% for reple in reple_list %}
@@ -15,4 +17,16 @@
         {{ form.as_table }}
         <input type="submit" value="저장">
     </form>
+{% endblock %}
+{% block javascript %}
+$("#like").on("click",function(){
+    $.ajax({
+        url:'{% url 'post:like' post.id %}',
+        dataType:'json',
+        success:function(data){
+            $("#like_count").text(data.like_count);
+            $("#like").attr("class",data.message);
+        }
+    });
+});
 {% endblock %}

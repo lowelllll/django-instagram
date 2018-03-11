@@ -27,7 +27,7 @@
             url:'{% url "post:follow" author.username %}',
             dataType:'json',
             success: function(data){
-                $(".follower_num").text("팔로우 "+data.follow);
+                $(".follower_num").text("팔로우 "+data.follow_count);
                 $("#follow").text(data.message);
             }
         });
