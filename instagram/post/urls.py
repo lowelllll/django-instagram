@@ -9,6 +9,5 @@ urlpatterns = [
     url(r'^modification/(?P<pk>\d+)/$',Post_update.as_view(),name='post_update'),
     url(r'^(?P<pk>\d+)/$',post_detail,name='post_detail'),
     url(r'^(?P<author>\w+)/$',user_post,name='user_post_list'),
-    url(r'^(?P<author>\w+)/follow/$',follow,name='follow'),
-    url(r'^(?P<author>\w+)/unfollow/$',unfollow,name='unfollow'),
+    url(r'^(?P<author>\w+)/follow/$',post_follow,name='follow'),
 ]

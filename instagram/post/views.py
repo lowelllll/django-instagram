@@ -88,19 +88,22 @@ def user_post(request,author):
 @login_required()
 def follow(request,author):
     Follow(folloing=request.user,follower=author).save()
+def post_follow(request,author):
+    follow,flag = Follow.objects.get_or_create(follower=author,folloing=request.user)
+    if not flag: # 원래 객체가 존재했다면
+        follow.delete()
+        message = "팔로잉"
+    else:
+        message = "팔로우"
+        
     f = Follow.objects.filter(follower=author).count()
     data = {
-        'follow': f
+        'follow': f,
+        'message':message
     }
     return JsonResponse(data)
 
 
 @login_required()
-def unfollow(request,author):
-    Follow.objects.get(folloing=request.user,follower=author).delete()
-    f = Follow.objects.filter(follower=author).count()
-    data = {
-        'follow':f
-    }
     return JsonResponse(data)
 
