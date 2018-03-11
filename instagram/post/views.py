@@ -2,8 +2,7 @@
 from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post,Reple,Follow
-from .forms import PostForm,RepleForm
+from .models import Post,Reple,Follow,Like
 import datetime
 from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from django.urls.base import reverse_lazy,reverse
@@ -33,7 +32,8 @@ def post_list(request):
 def post_detail(request,pk):
     post = Post.objects.get(id=pk)
     reple_list = Reple.objects.filter(post=pk)
-
+    is_like = Like.objects.filter(post=post,user=request.user).exists()
+    like = Like.objects.filter(post=post)
     if request.method == 'POST':
         form = RepleForm(request.POST)
         if form.is_valid():
@@ -46,7 +46,8 @@ def post_detail(request,pk):
             'post': post,
             'form': form,
             'reple_list': reple_list,
-
+            'is_like': is_like,
+            'like': like
         }
     return render(request,'post/post_detail.html',context)
 
@@ -94,14 +95,29 @@ def post_follow(request,author):
     else:
         message = "팔로우"
         
-    f = Follow.objects.filter(follower=author).count()
+    follow_count = Follow.objects.filter(follower=author).count()
     data = {
-        'follow': f,
+        'follow_count': follow_count,
         'message':message
     }
     return JsonResponse(data)
 
 
 @login_required()
+def post_like(request,pk):
+    post = Post.objects.get(pk=pk)
+    like,flag = Like.objects.get_or_create(post=post,user=request.user)
+    if not flag:
+        like.delete()
+        message = 'liked'
+    else:
+        message = 'like'
+    like_count = Like.objects.filter(post=post).count()
+    data = {
+        'message':message,
+        'like_count':like_count
+    }
     return JsonResponse(data)
+
+
 
