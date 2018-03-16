@@ -1,0 +1,26 @@
+{% extends 'base_home.html' %}
+{% block content %}
+    <a href="{% url 'auth:logout' %}">logout</a>
+    {% if user.profile.avatar %}
+        <img src="{{ user.profile.avatar.url }}" alt="avatar">
+    {% endif %}
+    <a href="{% url 'post:profile_update' %}">profile_edit</a>
+    <a href="{% url 'post:post_create' %}">new_post</a>
+
+    <ul>
+        {%  if posts %}
+            {% for post in posts %}
+                <li>
+                     <a href="{% url 'post:post_detail' post.id %}"><div>
+                        {{ post.content }}
+                        {{ post.author }}
+                        {{ post.date }}
+    {#                    timedelta로 시간 표시#}
+                        <a href="{% url 'post:post_update' post.id %}">Modify</a>
+                         {#<a href="{% url 'post:post_delete' post.id %}">Delete</a>#}
+                    </div></a>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+{% endblock %}
