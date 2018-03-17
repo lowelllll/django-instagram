@@ -1,9 +1,15 @@
 {% extends 'base_home.html' %}
+{% load staticfiles %}
 {% block content %}
+<article>
     <a href="{% url 'auth:logout' %}">logout</a>
-    {% if user.profile.avatar %}
+    <div id="profile-img">
+        {% if user.profile.avatar %}
         <img src="{{ user.profile.avatar.url }}" alt="avatar">
-    {% endif %}
+        {% else %}
+        <img src="{% static 'img/default_img.jpg' %}" alt="default">
+        {% endif %}
+    </div>
     <a href="{% url 'post:profile_update' %}">profile_edit</a>
     <a href="{% url 'post:post_create' %}">new_post</a>
 
@@ -23,4 +29,5 @@
             {% endfor %}
         {% endif %}
     </ul>
+</article>
 {% endblock %}

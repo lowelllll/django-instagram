@@ -12,13 +12,43 @@
         <h1>
             <a href="{% url 'post:post_list' %}"></a>
         </h1>
-        <input type="text" placeholder="검색" id="search">
+        <input type="text" placeholder="검색" id="search-form">
+        <div id="search-list">
+            <ul>
+
+            </ul>
+        </div>
     </header>
-    {% block content %}
-    {% endblock %}
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+    <footer>
+    </footer>
 </div>
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
+        $("#search-form").change(function(){
+        $("#search-list>ul").html("");
+            var word = $(this).val();
+            $.ajax({
+                url:'{% url "post:search" %}',
+                data:{
+                    'word':word
+                },
+                dataType:'json',
+                success:function(data){
+                   if(data.flag){
+                        for(var i=0;i<data.data.length;i++){
+                            $("#search-list > ul").append(
+                                "<li><div><img src='/media/"+data.profile[i]['avatar']+"'></div><a href='#'>"+data.data[i]['username']+"</a></li>"
+                                //href 수정
+                            );
+                        }
+                    }
+                }
+            });
+        });
     {% block javascript %}
     {% endblock %}</script>
 </body>

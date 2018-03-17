@@ -9,6 +9,7 @@ from django.conf import settings
 from .forms import *
 import datetime
 from django.http import JsonResponse
+from django.db.models import Q
 # Create your views here.
 @login_required()
 def post_list(request):
@@ -116,3 +117,25 @@ def post_like(request,pk):
         'like_count':like_count
     }
     return JsonResponse(data)
+
+@login_required()
+def post_search(request):
+    word  = request.GET.get('word', None)
+    User = get_user_model()
+    try:
+        users = User.objects.filter(
+            Q(username__icontains=word) | Q(email__icontains=word)
+        ).values()
+        profiles = Profile.objects.filter(
+            Q(user__username__icontains=word) | Q(user__email__icontains=word)
+        ).values()
+        data = {
+            'flag':True,
+            'profile':list(profiles),
+            'data': list(users)
+        }
+        return JsonResponse(data)
+    except:
+        return JsonResponse({
+            'flag':False
+        })

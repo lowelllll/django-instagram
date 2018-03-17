@@ -8,3 +8,6 @@ class ProfileForm(forms.ModelForm):
 
 class RepleForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea,max_length=200)
+
+class SearchForm(forms.Form):
+    word = forms.CharField(max_length=50)
