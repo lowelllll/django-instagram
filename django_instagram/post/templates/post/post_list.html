@@ -5,9 +5,7 @@
     <a href="{% url 'auth:logout' %}">logout</a>
     <div id="profile-img">
         {% if user.profile.avatar %}
-        <img src="{{ user.profile.avatar.url }}" alt="avatar">
-        {% else %}
-        <img src="{% static 'img/default_img.jpg' %}" alt="default">
+            <img src="{{ user.profile.avatar.url }}" alt="avatar">
         {% endif %}
     </div>
     <a href="{% url 'post:profile_update' %}">profile_edit</a>

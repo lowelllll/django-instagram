@@ -1,6 +1,13 @@
 {% extends 'base_home.html' %}
+{% load staticfiles %}
 {% block content %}
     <h1>{{ author.username }}</h1>
+
+{% if author.profile.avatar %}
+    <div id="profile-img">
+        <img src="{{ user.profile.avatar.url }}" alt="avatar">
+    </div>
+{% endif %}
 {% if author != user %}
         <button type="button" id="follow">{% if is_follow %}팔로우{% else %}팔로잉{% endif %}</button>
 {% else%}

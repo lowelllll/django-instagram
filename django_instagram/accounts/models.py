@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to='profile/%Y/%m')
+    avatar = models.ImageField(upload_to='profile/%Y/%m',default='default_img/default_img.jpg')
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_user_profile(sender, instance, created, **kwargs):
