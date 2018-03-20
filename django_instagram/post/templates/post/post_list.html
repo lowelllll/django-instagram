@@ -1,5 +1,6 @@
 {% extends 'base_home.html' %}
 {% load staticfiles %}
+{% load custom_tags %}
 {% block content %}
 <article>
     <a href="{% url 'auth:logout' %}">logout</a>
@@ -18,7 +19,7 @@
                      <a href="{% url 'post:post_detail' post.id %}"><div>
                         {{ post.content }}
                         {{ post.author }}
-                        {{ post.date }}
+                        {{ post.date|post_date }}
     {#                    timedelta로 시간 표시#}
                         <a href="{% url 'post:post_update' post.id %}">Modify</a>
                          {#<a href="{% url 'post:post_delete' post.id %}">Delete</a>#}
