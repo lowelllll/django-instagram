@@ -26,6 +26,7 @@ def profile_update(request):
     else:
         form = ProfileForm(instance=request.user.profile)
     return render(request,'post/profile_form.html',context={'form':form})
+
 class Post_create(CreateView,LoginRequiredMixin):
     model = Post
     success_url = reverse_lazy('post:post_list')
@@ -34,15 +35,28 @@ class Post_create(CreateView,LoginRequiredMixin):
         form.instance.author = self.request.user
         return super(Post_create,self).form_valid(form)
 
-class Post_update(UpdateView,LoginRequiredMixin):
-    # post author!=request.user가 아니면 redirect
-    model = Post
-    fields = ['content','image']
-    success_url = reverse_lazy('post:post_list')
+@login_required()
+def post_update(request,pk):
+    p = get_object_or_404(Post,pk=pk)
+    if request.user != p.author:
+        return HttpResponse("<script>alert('잘못된 접근입니다.'); history.back();</script>")
 
-class Post_delete(DeleteView,LoginRequiredMixin):
-    model = Post
-    success_url = reverse_lazy('post:post_list')
+    if request.method == 'POST':
+        form = PostForm(request.POST,request.FILES,instance=p)
+        if form.is_valid():
+            post = form.save()
+            return redirect("post:post_detail",post.pk)
+    else:
+        form = PostForm(instance=p)
+    return render(request,"post/post_form.html",{'form':form})
+
+@login_required()
+def post_delete(request,pk):
+    p = get_object_or_404(Post,pk=pk)
+    if request.user!= p.author:
+        return HttpResponse("<script>alert('잘못된 접근입니다.'); history.back();</script>")
+    p.delete()
+    return redirect("post:post_list")
 
 @login_required()
 def post_detail(request,pk):

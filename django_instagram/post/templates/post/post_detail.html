@@ -8,6 +8,10 @@
     {{ post.date }}
     좋아요 <a href="" id="like_count">{{ like|length }}</a>
     <button type="button" id="like" {% if is_like %}class="like"{% else %}class="liked"{% endif %}>♥</button>
+    {% if post.author == user %}
+    <a href="{% url 'post:post_update' post.id %}">수정</a>
+    <a href="{% url 'post:post_delete' post.id %}">삭제</a>
+    {% endif %}
     <h2>댓글</h2>
     <ul>
         {% for reple in reple_list %}
