@@ -19,4 +19,4 @@ def post_date(upload_date): # date 필터
         if upload_date.hour == now_date.hour:
             return "{0}분 전".format(now_date.minute-upload_date.minute)
         else:
-            return "{0}시간 전".format(now_date.hour-upload_date.hour)
+            return "{0}시간 전".format(day.seconds//3600)
