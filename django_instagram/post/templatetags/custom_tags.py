@@ -1,7 +1,9 @@
 # -*- coding:UTF-8 -*-
 from django import template
 from datetime import datetime, timezone
-
+from post.models import Tag,Post
+from django.utils.safestring import mark_safe
+import re
 register = template.Library()
 
 @register.filter
@@ -20,3 +22,12 @@ def post_date(upload_date): # date 필터
             return "{0}분 전".format(day.seconds//60)
         else:
             return "{0}시간 전".format(day.seconds//3600)
+
+@register.filter
+def tag_link(content,post):
+    tags = post.tags.all()
+    for tag in tags:
+        pattern = "#{0}".format(tag)
+        replace_content = "<a href='../tag/{0}'>#{1}</a>".format(tag,tag)
+        content= re.sub(pattern,replace_content,content)
+    return mark_safe(content)

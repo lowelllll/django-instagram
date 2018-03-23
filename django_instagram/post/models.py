@@ -4,11 +4,19 @@ from django.urls.base import reverse
 from django.utils.encoding import python_2_unicode_compatible
 # Create your models here.
 @python_2_unicode_compatible
+class Tag(models.Model):
+    tag = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.tag
+
+@python_2_unicode_compatible
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='post/%Y/%m')
+    tags = models.ManyToManyField(Tag)
 
     class Meta:
         ordering = ['-date']

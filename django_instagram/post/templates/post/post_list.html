@@ -20,9 +20,6 @@
                         {{ post.content }}
                         {{ post.author }}
                         {{ post.date|post_date }}
-    {#                    timedelta로 시간 표시#}
-                        <a href="{% url 'post:post_update' post.id %}">Modify</a>
-                         {#<a href="{% url 'post:post_delete' post.id %}">Delete</a>#}
                     </div></a>
                 </li>
             {% endfor %}

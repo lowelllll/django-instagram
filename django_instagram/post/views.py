@@ -10,6 +10,8 @@ from .forms import *
 import datetime
 from django.http import JsonResponse
 from django.db.models import Q
+import re
+
 # Create your views here.
 @login_required()
 def post_list(request):
@@ -33,7 +35,12 @@ class Post_create(CreateView,LoginRequiredMixin):
     fields = ['content','image']
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super(Post_create,self).form_valid(form)
+        post = form.save(commit=False)
+        post.save()
+        tags = tag_create(self.request.POST['content'])
+        post.tags.add(*tags)  # list 저장하기 위해 * 붙여줌
+        post.save()
+        return HttpResponseRedirect(self.success_url)
 
 @login_required()
 def post_update(request,pk):
@@ -153,3 +160,22 @@ def post_search(request):
         return JsonResponse({
             'flag':False
         })
+
+@login_required()
+def tag_list(request,tag):
+    t = Tag.objects.get(tag=tag)
+    posts = t.post_set.all()
+    return render(request,'post/tag_list.html',{'posts':posts})
+
+def tag_create(content):
+    find_tags = "".join(re.findall('#\w{0,20}\s', content))
+    find_tags = re.sub("\s", "", find_tags)
+    temp_tags = re.split("#", find_tags)
+    tags = []
+    for temp_tag in temp_tags:
+        if temp_tag == '':
+            continue
+        else:
+            tag, flag = Tag.objects.get_or_create(tag=temp_tag)
+            tags.append(tag)
+    return tags
