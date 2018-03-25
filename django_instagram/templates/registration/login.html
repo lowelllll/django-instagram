@@ -1,13 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form action="." method="post">{% csrf_token %}
-    {{ form.as_table }}
-    <input type="submit">
-</form>
-</body>
-</html>
+{% extends 'base_main.html' %}
+{% load staticfiles %}
+{% block extrastyle %}
+{% static 'css/sign_up_login.css' %}
+{% endblock %}
+{% block content %}
+<div id="login_form">
+    <h2></h2>
+    <table>
+        <form action="." method="post">{% csrf_token %}
+            <tr>
+                <td><input type="text" id="id_username" name="username" placeholder="password" required></td>
+            </tr>
+            <tr>
+                <td><input type="passwod" id="id_password" name="password" placeholder="password" required></td>
+            </tr>
+            <tr>
+                <td><button type="submit">로그인</button></td>
+            </tr>
+            </form>
+    </table>
+</div>
+<div class="login_form_2">
+    계정이 없으신가요? <a href="{% url 'main' %}">가입하기</a>
+</div>
+{% endblock %}
