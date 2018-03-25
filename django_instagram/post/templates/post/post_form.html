@@ -7,6 +7,27 @@
         </script>
     {% endif %}
     {{ form.as_table }}
+    <img id="blah" alt="" src="#">
     <input type="submit" value="글쓰기">
 </form>
+{% endblock %}
+{% block javascript %}
+// 이미지 미리보기
+ $(function() {
+            $("#id_image").on('change', function(){
+                readURL(this);
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
 {% endblock %}
