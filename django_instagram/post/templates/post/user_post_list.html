@@ -1,44 +1,60 @@
 {% extends 'base_home.html' %}
 {% load staticfiles %}
+{% block extrastyle %}{% static 'css/user_post_list.css' %}{% endblock %}
 {% block content %}
-    <h1>{{ author.username }}</h1>
+<div class="profile-area">
+    <ul>
+        <li>
+            <div class="profile-area-img">
+                <img src="{{  author.profile.avatar.url }}" alt="avatar">
+            </div>
+        </li>
+        <li>
+            <div class="profile-info">
+                <span>{{ author.username }}</span>
+                {% if author != user %}
+                <button type="button" id="follow">{% if is_follow %}팔로우{% else %}팔로잉{% endif %}</button>
+                {% else%}
+                <a href="{% url 'post:profile_update' %}"></a>
+                {% endif %}
 
-{% if author.profile.avatar %}
-    <div id="profile-img">
-        <img src="{{ user.profile.avatar.url }}" alt="avatar">
-    </div>
-{% endif %}
-{% if author != user %}
-        <button type="button" id="follow">{% if is_follow %}팔로우{% else %}팔로잉{% endif %}</button>
-{% else%}
-<a href="{% url 'post:profile_update' %}">프로필 설정</a>
-{% endif %}
-<h3>게시물 {{ posts|length }}</h3>
-<span class="follower_num">팔로우 {{ follower }}</span>
-<span class="folloing_num"> 팔로잉 {{ folloing }}</span>
+            </div>
+            <div class="profile-post-info">
+                <p>
+                    게시물 {{ posts|length }}개 &nbsp;&nbsp;
+                    <span class="follower_num">팔로우 {{ follower }}</span>&nbsp;&nbsp;
+                    <span class="folloing_num"> 팔로잉 {{ folloing }}</span>
+                </p>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="post-area">
     <ul>
         {% for post in posts %}
-            <li>
-                <a href="{{ post.get_absolute_url }}">
-                    <div>
-                        <img src="{{ post.image.url }}" alt="image">
-                    </div>
-                </a>
-            </li>
+        <li class="post">
+            <a href="{{ post.get_absolute_url }}">
+                <div>
+                    <img src="{{ post.image.url }}" alt="image">
+                </div>
+            </a>
+        </li>
         {% endfor %}
     </ul>
+</div>
 {% endblock %}
 {% block javascript %}
-    // 팔로우 기능
-    $("#follow").on("click",function(){
-        console.log("follow");
-        $.ajax({
-            url:'{% url "post:follow" author.username %}',
-            dataType:'json',
-            success: function(data){
-                $(".follower_num").text("팔로우 "+data.follow_count);
-                $("#follow").text(data.message);
-            }
-        });
-    });
+// 팔로우 기능
+$("#follow").on("click",function(){
+    console.log("follow");
+    $.ajax({
+    url:'{% url "post:follow" author.username %}',
+    dataType:'json',
+    success: function(data){
+    $(".follower_num").text("팔로우 "+data.follow_count);
+    $("#follow").text(data.message);
+    }
+});
+});
 {% endblock %}
+

@@ -1,19 +1,21 @@
 
 header{
    width:100%;
-   height:8%;
+   height:80px;
    border-bottom:1px solid #eee;
 }
 section{
     width:100%;
-    height:89.5%;
+    height:auto;
+    min-height:800px;
+    overflow:auto;
 }
 footer{
     width:100%;
-    height:2%;
+    height:50px;
 }
 header > div{
-   width:60%;
+   width:50%;
    height:100%;
    margin:0 auto;
 }
@@ -127,16 +129,18 @@ header h1 a{
     display:inline-block;
     margin-top:10px;
 }
-@media (max-width: 1126px) {
+@media (max-width: 1350px) {
+
+    header > div{
+        width:70%;
+    }
+}
+@media (max-width:1100px) {
     #search{
         display: none;
     }
-    header > div{
-        width:90%;
-    }
-}
-@media (max-width:650px) {
-    header > div{
-        width:90%;
+    article{
+        width:70%;
+        margin:0;
     }
 }
