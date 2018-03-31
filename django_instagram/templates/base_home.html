@@ -2,55 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>instagram</title>
     {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/common.css'%}">
     <link rel="stylesheet" href="{% static 'css/base_home.css' %}">
 </head>
 <body>
-<div id="wrap">
-    <header>
-        <h1>
-            <a href="{% url 'post:post_list' %}"></a>
-        </h1>
-        <input type="text" placeholder="검색" id="search-form">
-        <div id="search-list">
-            <ul>
 
-            </ul>
-        </div>
-    </header>
-    <section>
-        {% block content %}
-        {% endblock %}
-    </section>
-    <footer>
-    </footer>
-</div>
+    <div id="wrap">
+        <header>
+            <div>
+                <h1><a href="{% url 'post:post_list' %}"></a></h1>
+                <ul id="search">
+                    <li>
+                        <input type="text" placeholder="검색" id="search-form">
+                        <ul id="search-list">
+                        </ul>
+                    </li>
+                </ul>
+                <ul id="nav-list">
+                    <li><a href="{% url 'post:post_create' %}"></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href="{% url 'post:user_post_list' user.username %}"></a></li>
+                </ul>
+            </div>
+        </header>
+        <section>
+            <article>
+                {% block content %}
+                {% endblock %}
+            </article>
+        </section>
+        <footer>
+
+        </footer>
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="{% static 'js/common.js' %}"></script>
     <script>
-        $("#search-form").change(function(){
-        $("#search-list>ul").html("");
+    $("#search-form").change(function(){
+            $("#search-list").html("");
             var word = $(this).val();
-            var url;
-            var user_post;
-            $.ajax({
-                url:'{% url "post:search" %}',
-                data:{
-                    'word':word
-                },
-                dataType:'json',
-                success:function(data){
-                   if(data.flag){
-                        for(var i=0;i<data.data.length;i++){
-                            user_post = data.data[i].username;
-                            url = "{% url 'post:user_post_list' 1234 %}".replace(/1234/, user_post.toString());
-                            $("#search-list > ul").append(
-                                "<li><div><img src='/media/"+data.profile[i]['avatar']+"'></div><a href="+url+" class='user-post-list-link'>"+data.data[i]['username']+"</a></li>"
-                            );
+            if(word==""){
+                return;
+            }else{
+                var url;
+                var user_post;
+                $.ajax({
+                    url:'{% url "post:search" %}',
+                    data:{
+                        'word':word
+                    },
+                    dataType:'json',
+                    success:function(data){
+                        if(data.flag){
+                            for(var i=0;i<data.data.length;i++){
+                                user_post = data.data[i].username;
+                                url = "{% url 'post:user_post_list' 1234 %}".replace(/1234/, user_post.toString());
+                                $("#search-list").append(
+                                    "<li><div><img src='/media/"+data.profile[i]['avatar']+"'></div><div class='profile-name'><a href="+url+" class='user-post-list-link'>"+data.data[i]['username']+"</a></div></li>"
+                                );
+                            }
+                            var s = "search";
+                            console.log(data.data);
+                            console.log(data.profile);
                         }
                     }
-                }
-            });
+                });
+            }
         });
     {% block javascript %}
     {% endblock %}</script>
