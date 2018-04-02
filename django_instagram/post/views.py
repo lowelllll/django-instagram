@@ -76,7 +76,7 @@ def post_detail(request,pk):
         if form.is_valid():
             reple = Reple(author=request.user,post=post,content=form.cleaned_data['content'])
             reple.save()
-            return HttpResponseRedirect(reverse_lazy('post:post_detail',args=pk))
+            return redirect(post)
     else:
         form = RepleForm()
         context = {
@@ -129,9 +129,9 @@ def post_like(request,pk):
     like,flag = Like.objects.get_or_create(post=post,user=request.user)
     if not flag:
         like.delete()
-        message = 'liked'
-    else:
         message = 'like'
+    else:
+        message = 'liked'
     like_count = Like.objects.filter(post=post).count()
     data = {
         'message':message,

@@ -1,29 +1,71 @@
 {% extends 'base_home.html' %}
 {% load staticfiles %}
+{% block extrastyle %}{% static 'css/post_list.css' %}{% endblock %}
 {% load custom_tags %}
 {% block content %}
-<article>
-    <a href="{% url 'auth:logout' %}">logout</a>
-    <div id="profile-img">
-        {% if user.profile.avatar %}
-            <img src="{{ user.profile.avatar.url }}" alt="avatar">
-        {% endif %}
+<div class="posts">
+    {% if posts %}
+    {% for post in posts %}
+    <div class="post">
+        <div class="post-header">
+            <img src="{{ post.author.profile.avatar.url }}" alt="">
+            <p class="post-profile-name"><b><a href="{% url 'post:user_post_list' post.author %}">{{ post.author }}</a></b></p>
+        </div>
+        <div class="post-img">
+            <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" alt="img"></a>
+        </div>
+        <div class="post-info">
+            <div class="post-like-reple-bar">
+                {% is_likes post request.user as is_like %}
+                 <button type="button"  value="{{ post.id }}" class="like-button {% if is_like %}liked"{% else %}like"{% endif %}></button>
+                <a href=""></a>
+            </div>
+            <div class="post-like-count">
+                <p class="like-count-{{ post.id }}">좋아요 {{ post.like_set.count }}개</p>
+            </div>
+            <div class="post-content">
+                <p><span>{{ post.author }}&nbsp;</span>{{ post.content|tag_link:post }}</p>
+            </div>
+            <div class="post-reple-list">
+                 {% for reple in post.reple_set.all %}
+                    <p><span>{{ reple.author.username }} &nbsp;</span>{{ reple.content }}</p>
+                {% endfor %}
+            </div>
+            <div class="date">
+                <p>{{ post.date|post_date }}</p>
+            </div>
+            <div class="post-reple-form">
+                <form action="">
+                    <input type="text" placeholder="댓글쓰기.."><input type="submit" value="게시">
+                </form>
+            </div>
+        </div>
     </div>
-    <a href="{% url 'post:profile_update' %}">profile_edit</a>
-    <a href="{% url 'post:post_create' %}">new_post</a>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="aside">
+    <div class="user-profile">
+        <img src="{{ user.profile.avatar.url }}" alt="avatar"><p>{{ user.username }}</p>
+    </div>
+    <div class="developer-info">
+        <a href=""><img src="" alt=""></a>
+    </div>
 
-    <ul>
-        {%  if posts %}
-            {% for post in posts %}
-                <li>
-                     <a href="{% url 'post:post_detail' post.id %}"><div>
-                        {{ post.content }}
-                        {{ post.author }}
-                        {{ post.date|post_date }}
-                    </div></a>
-                </li>
-            {% endfor %}
-        {% endif %}
-    </ul>
-</article>
+</div>
+{% endblock %}
+{% block javascript %}
+$(".like-button").on("click",function(){
+    var pk = $(this).attr("value");
+    var url = "{% url 'post:like' 1234 %}".replace(/1234/,pk);
+    var $this = $(this);
+    $.ajax({
+        url:url,
+        dataType:'json',
+        success:function(data){
+            $(".like-count-"+pk).text("좋아요 "+data.like_count+" 개");
+            $this.attr("class",data.message+" like-button");
+        }
+    })
+});
 {% endblock %}
