@@ -15,7 +15,8 @@ import re
 # Create your views here.
 @login_required()
 def post_list(request):
-    posts = Post.objects.select_related('author').all()
+    posts = Post.objects.select_related('author__profile').prefetch_related('reple_set', 'reple_set__author',
+                                                                            'like_set').all()
     return render(request, 'post/post_list.html', {'posts':posts, 'date':datetime.datetime.now()})
 
 @login_required()
