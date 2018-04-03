@@ -180,3 +180,22 @@ def tag_create(content):
             tag, flag = Tag.objects.get_or_create(tag=temp_tag)
             tags.append(tag)
     return tags
+
+@login_required()
+def post_reple(request,pk):
+    try:
+        post = Post.objects.get(pk=pk)
+        comment = request.GET.get('comment')
+        reple = Reple(author = request.user , post=post,content=comment)
+        reple.save()
+        data = {
+            'reple':reple.content,
+            'author':reple.author.username,
+            'flag':True
+        }
+        return JsonResponse(data)
+    except:
+        data = {
+            'flag':False
+        }
+        return JsonResponse(data)

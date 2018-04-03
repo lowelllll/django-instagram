@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/like/$',post_like,name='like'),
     url(r'^search',post_search,name='search'),
     url(r'^tag/(?P<tag>\w+)/$',tag_list,name='tag_list'),
+    url(r'^reple/(?P<pk>\d+)/$', post_reple, name="post_reple"),
 ]

@@ -26,7 +26,7 @@
             <div class="post-content">
                 <p><span>{{ post.author }}&nbsp;</span>{{ post.content|tag_link:post }}</p>
             </div>
-            <div class="post-reple-list">
+            <div class="post-reple-list reple-list-{{ post.id }}">
                  {% for reple in post.reple_set.all %}
                     <p><span>{{ reple.author.username }} &nbsp;</span>{{ reple.content }}</p>
                 {% endfor %}
@@ -35,9 +35,7 @@
                 <p>{{ post.date|post_date }}</p>
             </div>
             <div class="post-reple-form">
-                <form action="">
-                    <input type="text" placeholder="댓글쓰기.."><input type="submit" value="게시">
-                </form>
+                <input type="text" placeholder="댓글쓰기.." name="reple" class="reple-content-{{ post.id }}"><button type="button" value="{{ post.id }}">게시</button>
             </div>
         </div>
     </div>
@@ -63,8 +61,29 @@ $(".like-button").on("click",function(){
         url:url,
         dataType:'json',
         success:function(data){
-            $(".like-count-"+pk).text("좋아요 "+data.like_count+" 개");
+            $(".like-count-"+pk).text("좋아요 "+data.like_count+"개");
             $this.attr("class",data.message+" like-button");
+        }
+    })
+});
+
+$(".post-reple-form > button").on("click",function(){
+    var pk = $(this).attr("value");
+    var $repleContent = $(".reple-content-"+pk);
+    var comment = $repleContent.val();
+    $repleContent.val("");
+    var url = "{% url 'post:post_reple' 1234 %}".replace(/1234/,pk);
+    $.ajax({
+        url:url,
+        data:{
+            'comment':comment
+        },
+        dataType:'json',
+        success:function(data){
+            //console.log(data.flag);
+            //console.log(pk);
+            $(".reple-list-"+pk).append("<p><span>"+data.author+"&nbsp</span>"+data.reple+"</p>");
+
         }
     })
 });
