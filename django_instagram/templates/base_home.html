@@ -57,16 +57,21 @@
                     dataType:'json',
                     success:function(data){
                         if(data.flag){
-                            for(var i=0;i<data.data.length;i++){
-                                user_post = data.data[i].username;
-                                url = "{% url 'post:user_post_list' 1234 %}".replace(/1234/, user_post.toString());
-                                $("#search-list").append(
-                                    "<li><div><img src='/media/"+data.profile[i]['avatar']+"'></div><div class='profile-name'><a href="+url+" class='user-post-list-link'>"+data.data[i]['username']+"</a></div></li>"
-                                );
+                            if(data.data) {
+                                for (var i = 0; i < data.data.length; i++) {
+                                    user_post = data.data[i].username;
+                                    url = "{% url 'post:user_post_list' 1234 %}".replace(/1234/, user_post.toString());
+                                    $("#search-list").append(
+                                        "<li><div><img src='/media/" + data.profile[i]['avatar'] + "'></div><div class='profile-name'><a href=" + url + " class='user-post-list-link'>" + data.data[i]['username'] + "</a></div></li>"
+                                    );
+                                }
                             }
-                            var s = "search";
-                            console.log(data.data);
-                            console.log(data.profile);
+                            if(data.tag){
+                                url = "{% url 'post:tag_list' 1234%}".replace(/1234/,data.tag);
+                                $("#search-list").append(
+                                        "<li><div class='profile-name'><a href=" + url + " class='user-post-list-link'>#" + data.tag + "</a></div></li>"
+                                    );
+                            }
                         }
                     }
                 });

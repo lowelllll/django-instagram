@@ -144,23 +144,28 @@ def post_like(request,pk):
 def post_search(request):
     word  = request.GET.get('word', None)
     User = get_user_model()
+    data = {}
+    data['flag'] = False
     try:
         users = User.objects.filter(
-            Q(username__icontains=word) | Q(email__icontains=word)
+            Q(username__icontains=word)
         ).values()
         profiles = Profile.objects.filter(
-            Q(user__username__icontains=word) | Q(user__email__icontains=word)
+            Q(user__username__icontains=word)
         ).values()
-        data = {
-            'flag':True,
-            'profile':list(profiles),
-            'data': list(users)
-        }
-        return JsonResponse(data)
+        data['flag'] = True
+        data['profile'] = list(profiles)
+        data['data'] = list(users)
     except:
-        return JsonResponse({
-            'flag':False
-        })
+        pass
+    try:
+        tag = Tag.objects.get(tag=word)
+        data['tag'] = tag.tag
+        data['flag']= True
+    except:
+        pass
+    finally:
+        return JsonResponse(data)
 
 @login_required()
 def tag_list(request,tag):
