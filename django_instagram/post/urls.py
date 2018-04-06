@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^search',post_search,name='search'),
     url(r'^tag/(?P<tag>\w+)/$',tag_list,name='tag_list'),
     url(r'^reple/(?P<pk>\d+)/$', post_reple, name="post_reple"),
+    url(r'^reples/(?P<pk>\d+)/$', more_reples, name="more_reples")
 ]

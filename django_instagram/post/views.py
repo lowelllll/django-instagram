@@ -75,7 +75,7 @@ def post_detail(request,pk):
     if request.method == 'POST':
         form = RepleForm(request.POST)
         if form.is_valid():
-            reple = Reple(author=request.user,post=post,content=form.cleaned_data['content'])
+            reple = Reple(author=request.user,post=post,content=form.cleaned_data['content'],author_name = request.user.username)
             reple.save()
             return redirect(post)
     else:
@@ -191,7 +191,7 @@ def post_reple(request,pk):
     try:
         post = Post.objects.get(pk=pk)
         comment = request.GET.get('comment')
-        reple = Reple(author = request.user , post=post,content=comment)
+        reple = Reple(author = request.user , post=post,content=comment,author_name=request.user.username)
         reple.save()
         data = {
             'reple':reple.content,
@@ -203,4 +203,16 @@ def post_reple(request,pk):
         data = {
             'flag':False
         }
+        return JsonResponse(data)
+
+@login_required()
+def more_reples(request,pk):
+    data = {}
+    try:
+        post = Post.objects.get(pk=pk)
+        reples = post.reple_set.all().values().reverse()
+        data['reples'] = list(reples)
+    except:
+        print("error")
+    finally:
         return JsonResponse(data)

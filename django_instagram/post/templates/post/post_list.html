@@ -27,9 +27,14 @@
                 <p><span>{{ post.author }}&nbsp;</span>{{ post.content|tag_link:post }}</p>
             </div>
             <div class="post-reple-list reple-list-{{ post.id }}">
-                 {% for reple in post.reple_set.all %}
-                    <p><span>{{ reple.author.username }} &nbsp;</span>{{ reple.content }}</p>
-                {% endfor %}
+                {% if post.reple_set.all|length > 3%}
+                <p><span class="more-reples" value="{{ post.id }}">댓글 더보기</span></p>
+                {% endif %}
+                <div>
+                    {% for reple in post.reple_set.all|slice:":3" reversed %}
+                        <p><span>{{ reple.author.username }} &nbsp;</span>{{ reple.content }}</p>
+                    {% endfor %}
+                </div>
             </div>
             <div class="date">
                 <p>{{ post.date|post_date }}</p>
@@ -86,5 +91,23 @@ $(".post-reple-form > button").on("click",function(){
 
         }
     })
+});
+$(".more-reples").on("click",function(){
+    var $this = $(this);
+    var pk = $(this).attr("value");
+    var url = "{% url 'post:more_reples' 1234 %}".replace(/1234/,pk);
+    $.ajax({
+        url:url,
+        dataType:'json',
+        success:function(data){
+            if(data.reples){
+                $(".reple-list-"+pk+" >div ").html("")
+                $this.css("display","none");
+                for(var i=0; i<data.reples.length;i++){
+                    $(".reple-list-"+pk+" > div").append("<p><span>"+data.reples[i].author_name+"&nbsp</span> "+data.reples[i].content+"</p>");
+                }
+            }
+        }
+    });
 });
 {% endblock %}
