@@ -8,7 +8,7 @@
     {% for post in posts %}
     <div class="post">
         <div class="post-header">
-            <img src="{{ post.author.profile.avatar.url }}" alt="">
+            <div><img src="{{ post.author.profile.avatar.url }}" alt=""></div>
             <p class="post-profile-name"><b><a href="{% url 'post:user_post_list' post.author %}">{{ post.author }}</a></b></p>
         </div>
         <div class="post-img">
@@ -49,7 +49,7 @@
 </div>
 <div class="aside">
     <div class="user-profile">
-        <img src="{{ user.profile.avatar.url }}" alt="avatar"><p>{{ user.username }}</p>
+        <div><img src="{{ user.profile.avatar.url }}" alt="avatar"></div><p>{{ user.username }}</p>
     </div>
     <div class="developer-info">
         <a href=""><img src="" alt=""></a>
@@ -58,6 +58,7 @@
 </div>
 {% endblock %}
 {% block javascript %}
+/* 좋아요 AJAX */
 $(".like-button").on("click",function(){
     var pk = $(this).attr("value");
     var url = "{% url 'post:like' 1234 %}".replace(/1234/,pk);
@@ -72,6 +73,7 @@ $(".like-button").on("click",function(){
     })
 });
 
+/* 댓글 달기 AJAX */
 $(".post-reple-form > button").on("click",function(){
     var pk = $(this).attr("value");
     var $repleContent = $(".reple-content-"+pk);
@@ -92,6 +94,8 @@ $(".post-reple-form > button").on("click",function(){
         }
     })
 });
+
+/* 댓글 더보기 AJAX */
 $(".more-reples").on("click",function(){
     var $this = $(this);
     var pk = $(this).attr("value");
