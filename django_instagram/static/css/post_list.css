@@ -19,12 +19,17 @@ article {
     height:70px;
     border-bottom:1px solid #eee;
 }
-.user-profile img {
-    width:60px;
+.user-profile > div{
+     width:60px;
     height:60px;
     border:1px solid #eee;
     border-radius: 100px;
     float:left;
+    overflow:hidden;
+}
+.user-profile img {
+  max-width:100%;
+  height:auto;
 }
 .user-profile p{
     float:left;
@@ -130,13 +135,18 @@ article {
     border:none;
     cursor:pointer;
 }
-.post-header img {
+.post-header > div {
     width:35px;
     height:35px;
     border-radius:100px;
     float:left;
     margin-left:10px;
     margin-top:10px;
+    overflow:hidden;
+}
+.post-header img {
+    max-width:100%;
+    height:auto;
 }
 .post-profile-name{
     float:left;
@@ -190,7 +200,9 @@ article {
     color:#6c6c6c;
     font-weight: bold;
 }
-
+.more-reples{
+    color:#6c6c6c;
+}
 @media (max-width: 1350px) {
     .aside{
         display:none;
