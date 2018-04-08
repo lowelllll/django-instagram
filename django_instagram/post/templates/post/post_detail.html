@@ -1,39 +1,89 @@
 {% extends 'base_home.html' %}
+{% load staticfiles %}
+{% block extrastyle %}{% static 'css/post_detail.css' %}{% endblock %}
 {% load custom_tags %}
     {% block content %}
-    {% if post.image %}
-    <img src="{{ post.image.url }}" alt="image">
-    {% endif %}
-<a href="{% url 'post:user_post_list' post.author.username %}">{{ post.author }}</a>
-    {{ post.content|tag_link:post }}
-    {{ post.date }}
-    좋아요 <a href="" id="like_count">{{ like|length }}</a>
-    <button type="button" id="like" {% if is_like %}class="like"{% else %}class="liked"{% endif %}>♥</button>
-    {% if post.author == user %}
-    <a href="{% url 'post:post_update' post.id %}">수정</a>
-    <a href="{% url 'post:post_delete' post.id %}">삭제</a>
-    {% endif %}
-    <h2>댓글</h2>
-    <ul>
-        {% for reple in reple_list %}
-        <li>{{ reple.author }}:{{ reple.content }}</li>
-        {% endfor %}
-    </ul>
-    <form action="." method="post">{% csrf_token %}
-        댓글:
-        {{ form.as_table }}
-        <input type="submit" value="저장">
-    </form>
+    <div id="config_option">
+        <ul>
+            <li><a href="{% url 'post:post_update' post.id %}">수정</a></li>
+            <li><a href="{% url 'post:post_delete' post.id %}">삭제</a></li>
+        </ul>
+    </div>
+   <div class="post-img"><img src="{{ post.image.url }}" alt="img-content"></div>
+                <div class="post-content">
+                    <div class="post-header">
+                        <div><img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author }}"></div>
+                        <p><a href="{% url 'post:user_post_list' post.author.username %}">{{ post.author }}</a></p>
+                    </div>
+                    <div class="post-text-reple-area-wrap">
+                        <!--scroll 없애기-->
+                        <div class="post-text-reple-area">
+                            <div class="post-text">
+                                <p><span>{{ post.author }}&nbsp;</span>{{ post.content|tag_link:post }}</p>
+                            </div>
+                            <div class="post-reples">
+                                {% for reple in reple_list reversed %}
+                                 <p><span>{{ reple.author }}&nbsp;</span>{{ reple.content }}</p>
+                        {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-button">
+                         <button type="button"  id ="like-button"class=" {% if is_like %}liked"{% else %}like"{% endif %}></button>
+                        <button type="button" id="reple-button">
+                    </div>
+                    <p class="like-count">
+                        좋아요 {{ post.like_set.count }}개
+                    </p>
+                    <p class="post-date">
+                       {{ post.date }}
+                    </p>
+                    <div id="reple-form">
+                        <input type="text" placeholder="댓글 달기..">
+                        {% if post.author == user %}<span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE1SURBVGhD7dnNKkVRGMbxbeYrRoww4k6Q8lVuBOUadIYmcg9EkeJCRPm4DQrh/9TatVotjNR69P7rN1n7TN6zzz671uqiKIqi1Dj2cJHspjWrpnGHz8ItpmDTGcoheiewaBLvqA0hb5hA882jNkBOn2m+UTyjNoDo2jAsOkRtCDmATborVyiHuISu2bWE/WRRC1EURc03m9i2iSf075BHrMOqLXwgfxmK1jZgk779coierlk0h9oAOYtn5t8Mon76ad3DJv1jffewr8Iq/dXmd+YBa7BtJomiKGq7IaxgkCynNau05XON/GUo2iKy2g46QjlET5t3Fo3hBbUhRFumI2i+BdQGyFlsYv92rPAKi2MFdYraEHIMm3S8pmO2cogbWB29KR187uA82YbFQx5FUfTXdd0XjeeiCFjZX5QAAAAASUVORK5CYII="></span>  {% endif %}
+                    </div>
+                </div>
+
 {% endblock %}
 {% block javascript %}
-$("#like").on("click",function(){
+$("#like-button").on("click",function(){
     $.ajax({
         url:'{% url 'post:like' post.id %}',
         dataType:'json',
         success:function(data){
-            $("#like_count").text(data.like_count);
-            $("#like").attr("class",data.message);
+            $(".like-count").text("좋아요 "+data.like_count+"개");
+            $("#like-button").attr("class",data.message);
         }
     });
 });
+$("#reple-form > input").keyup(function(e) {
+    if (e.keyCode == 13) {
+        // enter 를 눌렀을때
+        var $this = $(this);
+        var comment = $this.val();
+        var url = "{% url 'post:post_reple' 1234%}".replace(/1234/,{{ post.pk }});
+        $.ajax({
+            url:url,
+            data:{
+                'comment':comment
+            },
+            dataType:'json',
+            success:function(data){
+                $this.val("");
+                 $(".post-reples").append("<p><span>"+data.author+"</span> "+data.reple+"</p>");
+            }
+        });
+
+    }
+});
+$("#reple-button").on("click",function(){
+    $("#reple-form > input").focus();
+});
+$("#reple-form span").on("click",function(){
+    $("#config_option").css("display","block");
+});
+$("#config_option").on("click",function(){
+    $(this).css("display","none");
+})
 {% endblock %}
+

@@ -68,25 +68,16 @@ def post_delete(request,pk):
 
 @login_required()
 def post_detail(request,pk):
-    post = Post.objects.get(id=pk)
-    reple_list = Reple.objects.filter(post=pk)
+    post = Post.objects.select_related("author__profile").get(id=pk)
+    reple_list = Reple.objects.filter(post=pk).select_related("author")
     is_like = Like.objects.filter(post=post,user=request.user).exists()
     like = Like.objects.filter(post=post)
-    if request.method == 'POST':
-        form = RepleForm(request.POST)
-        if form.is_valid():
-            reple = Reple(author=request.user,post=post,content=form.cleaned_data['content'],author_name = request.user.username)
-            reple.save()
-            return redirect(post)
-    else:
-        form = RepleForm()
-        context = {
-            'post': post,
-            'form': form,
-            'reple_list': reple_list,
-            'is_like': is_like,
-            'like': like
-        }
+    context = {
+        'post': post,
+        'reple_list': reple_list,
+        'is_like': is_like,
+        'like': like
+    }
     return render(request,'post/post_detail.html',context)
 
 @login_required()
