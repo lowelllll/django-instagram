@@ -1,9 +1,22 @@
 {% extends 'base_home.html' %}
+{% load staticfiles %}
+{% block extrastyle %}{% static 'css/user_tag_post_list.css' %}{% endblock %}
 {% block content %}
-<h1>Tag List</h1>
-<ul>
-    {% for post in posts %}
-        <li><a href="{% url 'post:post_detail' post.id %}">{{ post.content }}</a></li>
-    {% endfor %}
-</ul>
+<div class="tag-area">
+<h1>#{{ tag }}</h1>
+    <p>{{ posts|length }}개의 결과</p>
+</div>
+<div class="post-area">
+    <ul>
+        {% for post in posts %}
+        <li class="post tag-post">
+            <a href="{{ post.get_absolute_url }}">
+                <div>
+                    <img src="{{ post.image.url }}" alt="image">
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

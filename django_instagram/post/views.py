@@ -171,7 +171,7 @@ def post_search(request):
 def tag_list(request,tag):
     t = Tag.objects.get(tag=tag)
     posts = t.post_set.all()
-    return render(request,'post/tag_list.html',{'posts':posts})
+    return render(request,'post/tag_list.html',{'posts':posts,'tag':tag})
 
 def tag_create(content):
     find_tags = "".join(re.findall('#\w{0,20}\s', content))

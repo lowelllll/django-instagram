@@ -4,10 +4,20 @@ article{
     height:auto;
     margin:0 auto;
 }
-.profile-area{
+.profile-area,.tag-area{
     width:100%;
     height:160px;
     margin-top:40px;
+}
+.tag-area h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 100;
+}
+.tag-area p {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
 }
 .profile-area > ul {
     width:100%;
@@ -72,7 +82,7 @@ article{
     width:100%;
     height:auto;
 }
-.post-area ul li{
+.post{
     width:250px;
     height:250px;
     margin-right:5%;
@@ -90,6 +100,9 @@ article{
     height:auto;
     width:100%;
     height:100%;
+}
+.tag-post {
+    margin-top:0px;
 }
 @media (max-width: 1350px) {
 
