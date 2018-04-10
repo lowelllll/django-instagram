@@ -30,6 +30,7 @@ article {
 .user-profile img {
   max-width:100%;
   height:auto;
+  min-height:100%;
 }
 .user-profile p{
     float:left;
@@ -147,6 +148,7 @@ article {
 .post-header img {
     max-width:100%;
     height:auto;
+    min-height:100%;
 }
 .post-profile-name{
     float:left;

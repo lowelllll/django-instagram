@@ -117,6 +117,7 @@ header h1 a{
 #profile-img img, #search-list div img{
     max-width:100%;
     height:auto;
+    min-height:100%;
 }
 .profile-name{
     border-radius:0px;

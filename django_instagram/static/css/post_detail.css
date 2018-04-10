@@ -48,6 +48,7 @@ article{
 .post-header div img{
     max-width:100%;
     height:auto;
+    min-height:100%;
 }
 .post-header p{
     width: 130px;

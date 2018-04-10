@@ -1,13 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form action="." method="post" enctype="multipart/form-data"> {% csrf_token %}
-    {{ form.as_table }}
-    <input type="submit">
-</form>
-</body>
-</html>
+{% extends 'base_home.html' %}
+{% load staticfiles %}
+{% block extrastyle %}{% static 'css/config.css' %}{% endblock %}
+{% block content %}
+<div class="menu">
+                    <ul>
+                        <li><a href="#"><p>프로필 편집</p></a></li>
+                        <li><a href="{% url 'account:password_change' %}"><p>비밀번호 변경</p></a></li>
+                        <li><a href="{% url 'account:logout' %}"><p>로그아웃</p></a></li>
+                    </ul>
+                </div>
+                <div class="edit_area">
+                    <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+                        <table class="profile-table">
+
+                            <tr>
+                                <td><div><img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}"></div></td>
+                                <td>{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">{{ form.errors }}</td>
+                            </tr>
+                            <tr>
+                                <td>프로필 변경</td>
+                                <td><input type="file" name="avatar"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="submit" valule="프로필 변경"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+{% endblock %}
