@@ -15,7 +15,7 @@
                 {% if author != user %}
                 <button type="button" id="follow">{% if is_follow %}팔로우{% else %}팔로잉{% endif %}</button>
                 {% else%}
-                <a href="{% url 'post:profile_update' %}"></a>
+                <a href="{% url 'account:password_change' %}"></a>
                 {% endif %}
 
             </div>

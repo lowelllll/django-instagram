@@ -21,7 +21,10 @@ from .views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^post/',include('post.urls',namespace='post')),
-    url(r'^accounts/',include('django.contrib.auth.urls',namespace='auth')),
+    url(r'^accounts/',include('django.contrib.auth.urls',namespace='account')),
+    # django/contrib/auth/urls.py app_name ='account'
+    # Reverse for 'password_change_done' not found. 'password_change_done' is not a valid view function or pattern name.
+    # solve : path('password_change/', views.PasswordChangeView.as_view(success_url=reverse_lazy('account:password_change_done')), name='password_change'),
     url(r'^$',Main.as_view(),name='main'),
     url(r'',include('social_django.urls',namespace='social'))
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
