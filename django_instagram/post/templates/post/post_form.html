@@ -1,15 +1,33 @@
 {% extends 'base_home.html' %}
+{% load staticfiles %}
+{% block extrastyle %}{% static 'css/post_form.css' %}{% endblock %}
 {% block content %}
-<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
-    {% if form.errors %}
-        <script>
-            alert({{ form.errors }});
-        </script>
-    {% endif %}
-    {{ form.as_table }}
-    <img id="blah" alt="" src="#">
-    <input type="submit" value="글쓰기">
-</form>
+<div class="post-form">
+                    <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+                        {% if form.errors %}
+                            <script>
+                                alert({{ form.errors }});
+                            </script>
+                        {% endif %}
+                        <div class="post-img">
+                            <div></div>
+                                <img src="" alt="img" id="blah">
+                        </div>
+                        <div class="post-file">
+                            {% if form.image.value %}
+                                {{ form.image }}
+                            {% else %}
+                                <input type="file" name="image" id="id_image">
+                            {% endif %}
+                        </div>
+                        <div class="post-content">
+                                <textarea name="content" id="id_content" cols="30" rows="10" required placeholder="이미지는 가능한 정사각형으로 올려주세요. &#13;&#10;#태그명 으로 태그 등록이 가능합니다.(띄어쓰기 해야함.)">{% if form.content.value %}{{ form.content.value }}{% endif %}</textarea>
+                        </div>
+                        <div class="post-button">
+                            <input type="submit" value="저장">
+                        </div>
+                    </form>
+</div>
 {% endblock %}
 {% block javascript %}
 // 이미지 미리보기
