@@ -53,6 +53,10 @@ def post_update(request,pk):
         form = PostForm(request.POST,request.FILES,instance=p)
         if form.is_valid():
             post = form.save()
+            post.tags.all().delete()
+            tags = tag_create(request.POST['content'])
+            post.tags.add(*tags)  # list 저장하기 위해 * 붙여줌
+            post.save()
             return redirect("post:post_detail",post.pk)
     else:
         form = PostForm(instance=p)
