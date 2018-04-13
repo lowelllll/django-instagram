@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from django.urls.base import reverse_lazy
 from django.contrib.auth import get_user_model
 from .models import *
+
 from django.conf import settings
 from .forms import *
 import datetime
@@ -148,14 +149,16 @@ def post_search(request):
         profiles = Profile.objects.filter(
             Q(user__username__icontains=word)
         ).values()
-        data['flag'] = True
-        data['profile'] = list(profiles)
-        data['data'] = list(users)
+        if users:
+            data['flag'] = True
+            data['profile'] = list(profiles)
+            data['data'] = list(users)
     except:
         pass
     try:
         tag = Tag.objects.get(tag=word)
         data['tag'] = tag.tag
+        data['tag_count'] = tag.post_set.count()
         data['flag']= True
     except:
         pass

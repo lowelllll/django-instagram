@@ -1,4 +1,3 @@
-
 header{
    width:100%;
    height:80px;
@@ -56,19 +55,14 @@ header h1 a{
 
 }
 #search-list{
-    width:100%;
+     width:110%;
     max-height:200px;
-    margin-top:32px;
-    background-color:#fff;
     overflow-y:scroll;
     overflow-x:hidden;
-    position:relative;
 }
 #search-list li{
     width:198px;
     height:50px;
-    border:1px solid #eee;
-    border-top:none;
 }
 
 #nav-list{
@@ -103,33 +97,66 @@ header h1 a{
     background-position:-236px -414px;
     margin-top:18px;
 }
-#profile-img , #search-list div:first-child{
-    width:100px;
-    height:100px;
-    overflow:hidden;
-    border-radius:100px;
+
+.search-list-field{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    margin-top: 30px;
+    background-color: #fff;
+    max-height: 200px;
+    display:none;
+    position:relative;
 }
-#search-list div:first-child{
-    width:50px;
-    height:50px;
-    float:left;
+.profile-img , .tag-img{
+    width: 35px;
+    height: 35px;
+    float: left;
+
+    margin-left: 10px;
+    margin-top: 7px;
 }
-#profile-img img, #search-list div img{
+.profile-img{
+    border-radius: 100px;
+    overflow: hidden;
+}
+.tag-img div{
+    background: url(../img/icon2.png) no-repeat left bottom;
+    background-position: -13px -373px;
+    width: 17px;
+    height: 35px;
+    background-size: 400px 400px;
+    margin-left:9px;
+}
+.profile-img img{
     max-width:100%;
     height:auto;
-    min-height:100%;
 }
-.profile-name{
-    border-radius:0px;
-    width:60%;
-    text-align:center;
-    float:left;
-    height:100%;
+.profile-name , .tag-name , .tag-count{
+    width: 130px;
+    height: auto;
+    float: left;
+    text-align: center;
+    margin-top: 13px;
 }
-.profile-name > a{
-    display:inline-block;
-    margin-top:10px;
+.tag-name,.tag-count {
+    margin-top:0;
+
 }
+.tag-count{
+    font-size:12px;
+    color:#6c6c6c;
+    font-weight: bold;
+}
+.profile-name a , .tag-name a{
+    color:#000;
+    font-size:13px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 @media (max-width: 1350px) {
 
     header > div{

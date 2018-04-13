@@ -18,8 +18,10 @@
                 <ul id="search">
                     <li>
                         <input type="text" placeholder="검색" id="search-form">
-                        <ul id="search-list">
-                        </ul>
+                        <div class="search-list-field">
+                            <ul id="search-list">
+                            </ul>
+                        </div>
                     </li>
                 </ul>
                 <ul id="nav-list">
@@ -57,21 +59,24 @@
                     dataType:'json',
                     success:function(data){
                         if(data.flag){
+                            $(".search-list-field").css("display","block");
                             if(data.data) {
                                 for (var i = 0; i < data.data.length; i++) {
                                     user_post = data.data[i].username;
                                     url = "{% url 'post:user_post_list' 1234 %}".replace(/1234/, user_post.toString());
                                     $("#search-list").append(
-                                        "<li><div><img src='/media/" + data.profile[i]['avatar'] + "'></div><div class='profile-name'><a href=" + url + " class='user-post-list-link'>" + data.data[i]['username'] + "</a></div></li>"
+                                         "<li><div class='profile-img'><img src='/media/" + data.profile[i]['avatar'] + "'></div><div class='profile-name'><a href=" + url + " class='user-post-list-link'>" + data.data[i]['username'] + "</a></div></li>"
                                     );
                                 }
                             }
                             if(data.tag){
                                 url = "{% url 'post:tag_list' 1234%}".replace(/1234/,data.tag);
                                 $("#search-list").append(
-                                        "<li><div class='profile-name'><a href=" + url + " class='user-post-list-link'>#" + data.tag + "</a></div></li>"
+                                        "<li><div class='tag-icon'><div></div></div><div class='tag-name'><a href=" + url + " class='user-post-list-link'>#" + data.tag + "</a></div><div class='tag-count'>"+data.tag_count+"개의 글</div></li>"
                                     );
-                            }
+                                }
+                        }else{
+                            $(".search-list-field").css("display","none");
                         }
                     }
                 });
