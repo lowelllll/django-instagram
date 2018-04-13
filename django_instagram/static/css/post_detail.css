@@ -65,7 +65,7 @@ article{
     max-height: 200px;
 }
 .post-text p, .post-reples p{
-    width:100%;
+    width:90%;
     height:100%;
     word-wrap: break-word;
 }

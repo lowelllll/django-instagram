@@ -64,7 +64,6 @@ article{
     height:25px;
     border:1px solid #eee;
     border-radius: 5px;
-    background:none;
     cursor: pointer;
 }
 .profile-info a{
@@ -104,6 +103,14 @@ article{
 }
 .tag-post {
     margin-top:0px;
+}
+.folloing{
+    background-color: rgba(0,0,0,0);
+    color:000;
+}
+.follow{
+    background-color:#3b96ef;
+    color:#fff;
 }
 @media (max-width: 1350px) {
 

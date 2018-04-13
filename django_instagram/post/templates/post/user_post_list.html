@@ -13,7 +13,7 @@
             <div class="profile-info">
                 <span>{{ author.username }}</span>
                 {% if author != user %}
-                <button type="button" id="follow">{% if is_follow %}팔로우{% else %}팔로잉{% endif %}</button>
+                <button type="button" id="follow" class="{% if is_follow %} follow {% else %} folloing {% endif %}">{% if is_follow %}팔로우{% else %}팔로잉{% endif %}</button>
                 {% else%}
                 <a href="{% url 'account:password_change' %}"></a>
                 {% endif %}
@@ -51,8 +51,9 @@ $("#follow").on("click",function(){
     url:'{% url "post:follow" author.username %}',
     dataType:'json',
     success: function(data){
-    $(".follower_num").text("팔로우 "+data.follow_count);
-    $("#follow").text(data.message);
+        $(".follower_num").text("팔로우 "+data.follow_count);
+        $("#follow").text(data.message_kr);
+        $("#follow").attr("class",data.message);
     }
 });
 });

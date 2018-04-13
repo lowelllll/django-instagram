@@ -108,14 +108,17 @@ def post_follow(request, author):
     follow, flag = Follow.objects.get_or_create(follower=author, folloing=request.user)
     if not flag:  # 원래 객체가 존재했다면
         follow.delete()
-        message = "팔로잉"
+        message = "folloing"
+        message_kr = "팔로잉"
     else:
-        message = "팔로우"
+        message = "follow"
+        message_kr = "팔로우"
 
     follow_count = Follow.objects.filter(follower=author).count()
     data = {
         'follow_count': follow_count,
-        'message': message
+        'message': message,
+        'message_kr':message_kr
     }
     return JsonResponse(data)
 
