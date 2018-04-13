@@ -91,7 +91,7 @@ def user_post(request,author):
     user = User.objects.get(username=author)
     folloing = Follow.objects.filter(folloing=author).count()
     follower = Follow.objects.filter(follower=author).count()
-    posts = Post.objects.filter(author=user)
+    posts = Post.objects.prefetch_related('reple_set','like_set').filter(author=user)
     is_follow = Follow.objects.filter(follower=author,folloing=request.user).exists() # 해당 객체가 있으면 True,없으면 False 리턴
     context = {
         'posts':posts,

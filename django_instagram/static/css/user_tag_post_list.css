@@ -90,17 +90,52 @@ article{
     float:left;
     margin-top:50px;
 }
-.post div {
+.post > a > div {
     width:100%;
     height:100%;
     overflow: hidden;
+    position:relative;
 }
 .post img {
     max-width:100%;
     height:auto;
     width:100%;
     height:100%;
+    position:absolute;
 }
+.post_info {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background-color:rgba(0,0,0,0.5);
+    display:none;
+}
+.post_info > p{
+    color: #fff;
+    margin-top: 115px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align:center;
+}
+.post_info span:nth-child(odd){
+    display:inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right:2px;
+    margin-left:10px;
+}
+.post_info span:nth-child(1){
+    background: url("../img/icon.png") no-repeat ;
+    background-position: -385px -309px;
+}
+.post_info span:nth-child(3){
+    background: url("../img/icon.png") no-repeat left bottom;
+    background-position: -385px -288px;
+}
+.post:hover .post_info{
+    display:block;
+}
+/* TAG */
 .tag-post {
     margin-top:0px;
 }
