@@ -4,7 +4,7 @@ article {
     height:auto;
 }
 .posts{
-    width:60%;
+    width:400px;
     height:auto;
     float:left;
     min-width: 500px;
@@ -13,6 +13,7 @@ article {
     width:40%;
     height:300px;
     float:left;
+    margin-left:50px;
 }
 .user-profile{
     width:100%;
@@ -173,7 +174,7 @@ article {
     background:url('../img/icon.png') no-repeat left bottom;
     background-position: -468px -336px;
 }
-.post-like-reple-bar a{
+.post-like-reple-bar span{
     display:inline-block;
     border:none;
     margin-left:5px;
@@ -182,6 +183,7 @@ article {
     height: 28px;
     background: url("../img/icon.png") no-repeat left bottom;
     background-position: -25px -420px;
+    cursor:pointer;
 }
 .developer-info{
     width:100%;

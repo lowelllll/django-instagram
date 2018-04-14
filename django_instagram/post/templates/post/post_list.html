@@ -18,7 +18,7 @@
             <div class="post-like-reple-bar">
                 {% is_likes post request.user as is_like %}
                  <button type="button"  value="{{ post.id }}" class="like-button {% if is_like %}liked"{% else %}like"{% endif %}></button>
-                <a href=""></a>
+                <span class="reple-pointer" value="{{ post.id }}"></span>
             </div>
             <div class="post-like-count">
                 <p class="like-count-{{ post.id }}">좋아요 {{ post.like_set.count }}개</p>
@@ -27,7 +27,7 @@
                 <p><span>{{ post.author }}&nbsp;</span>{{ post.content|tag_link:post }}</p>
             </div>
             <div class="post-reple-list reple-list-{{ post.id }}">
-                {% if post.reple_set.all|length > 3%}
+                {% if post.reple_set.all|length > 3 %}
                 <p><span class="more-reples" value="{{ post.id }}">댓글 더보기</span></p>
                 {% endif %}
                 <div>
@@ -113,5 +113,10 @@ $(".more-reples").on("click",function(){
             }
         }
     });
+});
+
+$(".reple-pointer").on("click",function(){
+    var pk = $(this).attr("value");
+    $(".reple-content-"+pk).focus();
 });
 {% endblock %}

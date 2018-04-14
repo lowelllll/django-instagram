@@ -44,6 +44,8 @@ article{
     margin-top:30px;
     border:1px solid #eee;
     height:auto;
+    word-wrap: break-word;
+
 }
 .post-content{
     width:100%;
