@@ -70,6 +70,7 @@ article {
     margin: auto;
     min-height: 100%;
     min-width: 100%;
+    max-width:150%;
 }
 .post-info{
     width:100%;
