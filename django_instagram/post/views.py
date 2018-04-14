@@ -1,3 +1,4 @@
+# -*- coding:UTF-8 -*-
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -217,3 +218,19 @@ def more_reples(request,pk):
         print("error")
     finally:
         return JsonResponse(data)
+
+@login_required()
+def follow_request_list(request):
+    try:
+        followers = Follow.objects.filter(follower=request.user.username)  # 나를 팔로워 한 사람들
+        folloings = Follow.objects.filter(folloing=request.user.username).values('follower')  # 내가 팔로워 한 사람들
+        follow_list = followers.exclude(folloing__in=folloings)
+        # follow_list_values = followers.exclude(folloings__in=folloings)
+        # User = get_user_model()
+        # follow_users = User.objects.filter(username__in=follow_list_values).select_related('profile')
+        context = {
+            'follow_list':follow_list
+        }
+        return render(request,'post/follow_request_list.html',context)
+    except:
+        return

@@ -1,0 +1,34 @@
+{% extends 'base_home.html' %}
+{% load staticfiles %}
+{% block extrastyle %}{% static 'css/follow_request.css' %}{% endblock %}
+{% block content %}
+<div class="folloing-area">
+    <h1>팔로잉 요청 목록</h1>
+    <p>{{ follow_list|length }}개의 요청</p>
+</div>
+<div class="user-list">
+    <ul>
+        {% for follow in follow_list %}
+        <li>
+            <p><a href="{% url 'post:user_post_list' follow.folloing %}">{{ follow.folloing }}</a></p>
+            <button class="un_follow" id="follow" value="{{ follow.folloing }}">팔로잉</button>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+{% block javascript %}
+// 팔로우 기능
+$("#follow").on("click",function(){
+    var user = $(this).attr("value");
+    var url = "{% url 'post:follow' 1234 %}".replace(/1234/,user);
+    $.ajax({
+    url:url,
+    dataType:'json',
+    success: function(data){
+        $("#follow").text(data.message_kr);
+        $("#follow").attr("class",data.message);
+    }
+});
+});
+{% endblock %}

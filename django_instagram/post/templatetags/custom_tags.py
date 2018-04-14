@@ -1,7 +1,7 @@
 # -*- coding:UTF-8 -*-
 from django import template
 from datetime import datetime, timezone
-from post.models import Tag,Post
+from post.models import Follow
 from django.utils.safestring import mark_safe
 import re
 register = template.Library()
@@ -35,3 +35,9 @@ def tag_link(content,post):
 @register.simple_tag
 def is_likes(post,user):
     return post.like_set.filter(user=user,post=post).exists()
+
+@register.simple_tag
+def follower_request(user):
+    followers = Follow.objects.filter(follower=user.username) # 나를 팔로워 한 사람들
+    folloings = Follow.objects.filter(folloing=user.username).values('follower') # 내가 팔로워 한 사람들
+    return followers.exclude(folloing__in=folloings).count() # 나를 팔로워 한 사람들 중에 내가 팔로워 한 사람들이면 제외함.

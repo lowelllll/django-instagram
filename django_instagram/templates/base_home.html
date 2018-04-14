@@ -26,7 +26,13 @@
                 </ul>
                 <ul id="nav-list">
                     <li><a href="{% url 'post:post_create' %}"></a></li>
-                    <li><a href=""></a></li>
+                    <li>
+                        <span></span>
+                        <ul class="follower-request d_n">
+                            {% load custom_tags %}
+                            <li><p>팔로워 요청&nbsp;<span><a href="{% url 'post:follow_request_list' %}">{% follower_request user as count %} {{ count }} 건</a></span></p></li>
+                        </ul>
+                    </li>
                     <li><a href="{% url 'post:user_post_list' user.username %}"></a></li>
                 </ul>
             </div>
@@ -81,6 +87,10 @@
                     }
                 });
             }
+        });
+        $("#nav-list > li:nth-child(2) > span").on("click",function(){
+            $(".follower-request").toggleClass('d_n');
+            $(".follower-request").toggleClass('d_b');
         });
     {% block javascript %}
     {% endblock %}</script>

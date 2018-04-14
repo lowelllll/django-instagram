@@ -70,29 +70,30 @@ header h1 a{
     height:100%;
     float:right;
 }
-#nav-list li {
+#nav-list > li {
     width:calc(200px/3);
     height:100%;
     float:left;
 }
-#nav-list li a{
+#nav-list > li > a, #nav-list > li > span{
     display:inline-block;
     width:25px;
     height:35px;
     margin-top:20px;
     margin-left:20px;
 }
-#nav-list li:first-child a{
+#nav-list > li:first-child > a{
     background:url('../img/icon.png') no-repeat left bottom;
     background-position:-405px -340px;
 }
-#nav-list li:nth-child(2) a{
+#nav-list >  li:nth-child(2) > span{
     background:url('../img/icon.png') no-repeat left bottom;
     background-position:-470px -309px;
     height:25px;
     margin-top:23px;
+    cursor:pointer;
 }
-#nav-list li:last-child a{
+#nav-list > li:last-child > a{
     background:url('../img/icon.png') no-repeat left bottom;
     background-position:-236px -414px;
     margin-top:18px;
@@ -156,7 +157,36 @@ header h1 a{
     text-decoration: none;
     font-weight: bold;
 }
+/* follower request */
+.follower-request{
+    width: 200px;
+    margin-top: 20px;
+    margin-left: -140px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.d_n{
+    display:none;
+}
+.d_b {
+    display:block;
+}
+.follower-request li{
+    height:50px
+}
+.follower-request p{
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 45px;
 
+}
+.follower-request span a{
+    color:#ec4955;
+    font-weight: bold;
+    text-decoration: none;
+}
 @media (max-width: 1350px) {
 
     header > div{
