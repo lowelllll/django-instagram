@@ -13,6 +13,14 @@
             <a href="{{ post.get_absolute_url }}">
                 <div>
                     <img src="{{ post.image.url }}" alt="image">
+                    <div class="post_info">
+                        <p>
+                            <span></span>
+                            <span>{{ post.reple_set.count }}</span>
+                            <span></span>
+                            <span>{{ post.like_set.count }}</span>
+                        </p>
+                    </div>
                 </div>
             </a>
         </li>

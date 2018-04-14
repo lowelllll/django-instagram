@@ -54,7 +54,6 @@
 {% block javascript %}
 // 팔로우 기능
 $("#follow").on("click",function(){
-    console.log("follow");
     $.ajax({
     url:'{% url "post:follow" author.username %}',
     dataType:'json',
