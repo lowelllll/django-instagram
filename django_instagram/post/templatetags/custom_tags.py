@@ -27,9 +27,8 @@ def post_date(upload_date): # date 필터
 def tag_link(content,post):
     tags = post.tags.all()
     for tag in tags:
-        pattern = "#{0}".format(tag)
         replace_content = "<a href='/post/tag/{0}'>#{1}</a>".format(tag,tag)
-        content= re.sub(pattern,replace_content,content)
+        content= re.sub(r'\#{0}\b'.format(tag),replace_content,content)
     return mark_safe(content)
 
 @register.simple_tag
