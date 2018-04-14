@@ -11,36 +11,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="base_home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/base_home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="27" column="64" lean-forward="true" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
-              <folding>
-                <element signature="e#1217#1223#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post_detail.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/css/post_detail.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="835">
-              <caret line="67" column="14" lean-forward="false" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/post/views.py">
+        <entry file="file://$PROJECT_DIR$/django_instagram/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="89" column="17" lean-forward="true" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
-              <folding>
-                <element signature="e#23#119#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="140">
+              <caret line="10" column="39" lean-forward="false" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,31 +31,73 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/post/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+            <state relative-caret-position="100">
+              <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/post/urls.py">
+      <file leaf-file-name="sign_up.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/registration/sign_up.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+            <state relative-caret-position="440">
+              <caret line="43" column="21" lean-forward="true" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="custom_tags.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/post/templatetags/custom_tags.py">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/registration/login.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="419">
-              <caret line="41" column="95" lean-forward="true" selection-start-line="41" selection-start-column="95" selection-end-line="41" selection-end-column="95" />
+              <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post_list.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/post_list.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post_form.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/post_form.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="46" column="26" lean-forward="true" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/post/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="445">
+              <caret line="203" column="23" lean-forward="true" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="23" />
+              <folding>
+                <element signature="e#23#119#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom_tags.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/post/templatetags/custom_tags.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
                 <element signature="e#23#50#0" expanded="true" />
               </folding>
@@ -87,31 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="follow_request_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/post/templates/post/follow_request_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="follow_request.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/follow_request.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_post_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/post/templates/post/user_post_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="46" column="22" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="46" selection-end-column="22" />
+            <state relative-caret-position="100">
+              <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -140,6 +138,9 @@
       <find>search-list</find>
       <find>li</find>
       <find>.post</find>
+      <find>post</find>
+      <find>posts</find>
+      <find>post-file</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -149,14 +150,12 @@
         <option value="$PROJECT_DIR$/django_instagram/templates/main.html" />
         <option value="$PROJECT_DIR$/templates/main.html" />
         <option value="$PROJECT_DIR$/post/templates/post_list.html" />
-        <option value="$PROJECT_DIR$/django_instagram/views.py" />
         <option value="$PROJECT_DIR$/post/admin.py" />
         <option value="$PROJECT_DIR$/secrets.json" />
         <option value="$PROJECT_DIR$/django_instagram/settings.py" />
         <option value="$PROJECT_DIR$/accounts/models.py" />
         <option value="$PROJECT_DIR$/post/forms.py" />
         <option value="$PROJECT_DIR$/templates/base_main.html" />
-        <option value="$PROJECT_DIR$/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/post/models.py" />
         <option value="$PROJECT_DIR$/static/css/user_post_list.css" />
         <option value="$PROJECT_DIR$/post/templates/post/post_detail.html" />
@@ -164,13 +163,10 @@
         <option value="$PROJECT_DIR$/templates/registration/password_change_done.html" />
         <option value="$PROJECT_DIR$/templates/registration/password_change_form.html" />
         <option value="$USER_HOME$/study/env/instagram/Lib/site-packages/django/contrib/auth/urls.py" />
-        <option value="$PROJECT_DIR$/templates/registration/sign_up.html" />
         <option value="$PROJECT_DIR$/django_instagram/urls.py" />
         <option value="$PROJECT_DIR$/post/templates/post/profile_form.html" />
         <option value="$PROJECT_DIR$/static/css/config.css" />
-        <option value="$PROJECT_DIR$/static/css/post_list.css" />
         <option value="$PROJECT_DIR$/post/templates/post/post_form.html" />
-        <option value="$PROJECT_DIR$/static/css/post_form.css" />
         <option value="$PROJECT_DIR$/static/css/post_detail.css" />
         <option value="$PROJECT_DIR$/static/css/user_tag_post_list.css" />
         <option value="$PROJECT_DIR$/static/css/base_home.css" />
@@ -181,8 +177,13 @@
         <option value="$PROJECT_DIR$/templates/base_home.html" />
         <option value="$PROJECT_DIR$/post/templates/post/follow_request_list.html" />
         <option value="$PROJECT_DIR$/static/css/follow_request.css" />
-        <option value="$PROJECT_DIR$/post/views.py" />
         <option value="$PROJECT_DIR$/post/templates/post/tag_list.html" />
+        <option value="$PROJECT_DIR$/django_instagram/views.py" />
+        <option value="$PROJECT_DIR$/templates/registration/sign_up.html" />
+        <option value="$PROJECT_DIR$/templates/registration/login.html" />
+        <option value="$PROJECT_DIR$/static/css/post_list.css" />
+        <option value="$PROJECT_DIR$/static/css/post_form.css" />
+        <option value="$PROJECT_DIR$/post/views.py" />
       </list>
     </option>
   </component>
@@ -493,13 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/registration/sign_up.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="46" column="40" lean-forward="false" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/registration/password_change_done.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -511,13 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="19" column="32" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="85" lean-forward="false" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
         </state>
       </provider>
     </entry>
@@ -543,20 +530,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/media/post/2018/04/20837007_261679467670462_1377536040645951488_n.jpg" />
-    <entry file="file://$PROJECT_DIR$/static/css/post_list.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="150" column="20" lean-forward="true" selection-start-line="150" selection-start-column="20" selection-end-line="150" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/post_form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/media/post/2018/04/2.jpg" />
     <entry file="file://$PROJECT_DIR$/media/profile/2018/04/DGDb6rLUMAAYtgQ.jpg" />
     <entry file="file://$PROJECT_DIR$/media/profile/2018/04/20837007_261679467670462_1377536040645951488_n.jpg">
@@ -605,16 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_instagram/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/post/templates/post/post_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -657,24 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/follow_request.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="15" lean-forward="true" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/post/templatetags/custom_tags.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="41" column="95" lean-forward="true" selection-start-line="41" selection-start-column="95" selection-end-line="41" selection-end-column="95" />
-          <folding>
-            <element signature="e#23#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/post_detail.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="835">
@@ -683,20 +628,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/post/templates/post/user_post_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="46" column="22" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="46" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/follow_request.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/post_list.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/post_form.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="46" column="26" lean-forward="true" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/post/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_instagram/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="10" column="39" lean-forward="false" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/post/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="89" column="17" lean-forward="true" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
+        <state relative-caret-position="445">
+          <caret line="203" column="23" lean-forward="true" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="23" />
           <folding>
             <element signature="e#23#119#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/post/templates/post/user_post_list.html">
+    <entry file="file://$PROJECT_DIR$/templates/registration/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/registration/sign_up.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
-          <caret line="46" column="22" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="46" selection-end-column="22" />
+          <caret line="43" column="21" lean-forward="true" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -709,11 +710,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/post/models.py">
+    <entry file="file://$PROJECT_DIR$/post/templatetags/custom_tags.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="459">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
