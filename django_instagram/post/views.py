@@ -17,8 +17,9 @@ import re
 # Create your views here.
 @login_required()
 def post_list(request):
+    follows = Follow.objects.filter(folloing=request.user.username).values('follower')
     posts = Post.objects.select_related('author__profile').prefetch_related('reple_set', 'reple_set__author',
-                                                                            'like_set').all()
+                                                                            'like_set').filter(Q(author__username__in=follows)|Q(author=request.user)) # or은 Q 객체를 사용해야함.
     return render(request, 'post/post_list.html', {'posts':posts, 'date':datetime.datetime.now()})
 
 @login_required()
