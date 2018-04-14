@@ -4,11 +4,11 @@
 {% block content %}
 <div class="post-form">
                     <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
-                        {% if form.errors %}
-                            <script>
-                                alert({{ form.errors }});
+                        {% if forms.errors %}
+                             <script>
+                                alert("게시글 업로드에 실패했습니다. 다시 입력해주세요.");
                             </script>
-                        {% endif %}
+                            {% endif %}
                         <div class="post-img">
                             <div></div>
                                 <img src="" alt="img" id="blah">
@@ -17,7 +17,7 @@
                             {% if form.image.value %}
                                 {{ form.image }}
                             {% else %}
-                                <input type="file" name="image" id="id_image">
+                                <input type="file" name="image" id="id_image" required>
                             {% endif %}
                         </div>
                         <div class="post-content">

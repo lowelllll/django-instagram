@@ -18,6 +18,11 @@
                 <td><button type="submit">로그인</button></td>
             </tr>
             </form>
+        {% if forms.errors %}
+            <script>
+                alert("로그인에 실패했습니다. 다시 입력해주세요.");
+            </script>
+        {% endif %}
     </table>
 </div>
 <div class="login_form_2">

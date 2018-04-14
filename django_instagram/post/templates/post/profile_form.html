@@ -11,6 +11,11 @@
                 </div>
                 <div class="edit_area">
                     <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+                        {% if forms.errors %}
+                             <script>
+                                alert("프로필 변경에 실패했습니다. 다시 설정해주세요.");
+                            </script>
+                            {% endif %}
                         <table class="profile-table">
 
                             <tr>
@@ -22,7 +27,7 @@
                             </tr>
                             <tr>
                                 <td>프로필 변경</td>
-                                <td><input type="file" name="avatar"></td>
+                                <td><input type="file" name="avatar" required></td>
                             </tr>
                             <tr>
                                 <td></td>

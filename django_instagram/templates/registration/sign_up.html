@@ -28,10 +28,10 @@
             <td><label for="id_username"><input type="text" id="id_username" name="username" required placeholder="username"></label><br></td>
         </tr>
         <tr>
-            <td><label for="id_password1"><input type="password" id="id_password1" minlength="8" name="password1" required placeholder="password1"></label><br></td>
+            <td><label for="id_password1"><input type="password" id="id_password1" minlength="8" name="password1" required placeholder="password1(more 8 character)"></label><br></td>
         </tr>
         <tr>
-            <td><label for="id_password2"><input type="password" id="id_password2" minlength="8" name="password2" required placeholder="password2"></label><br></td>
+            <td><label for="id_password2"><input type="password" id="id_password2" minlength="8" name="password2" required placeholder="password2(more 8 character)"></label><br></td>
         </tr>
         <tr>
             <td><button type="submit" value="가입" id="input_submit">가입</button></td>
@@ -39,7 +39,9 @@
         </form>
     </table>
         {% if form.errors %}
-            {{ form.errors }}
+            <script>
+                alert("가입에 실패했습니다. 다시 입력해주세요.");
+            </script>
         {% endif %}
 </form>
     </div>
