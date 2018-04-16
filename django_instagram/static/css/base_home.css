@@ -111,7 +111,7 @@ header h1 a{
     display:none;
     position:relative;
 }
-.profile-img , .tag-img{
+.profile-img , .tag-icon{
     width: 35px;
     height: 35px;
     float: left;
@@ -123,7 +123,7 @@ header h1 a{
     border-radius: 100px;
     overflow: hidden;
 }
-.tag-img div{
+.tag-icon div{
     background: url(../img/icon2.png) no-repeat left bottom;
     background-position: -13px -373px;
     width: 17px;
