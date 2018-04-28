@@ -20,3 +20,6 @@
 
 ## 서버 띄우기 
 1. `python manage.py runserver` 실행
+
+## 개발기
+[http://jamanbbo.tistory.com/38](http://jamanbbo.tistory.com/38)
