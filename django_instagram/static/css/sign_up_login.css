@@ -1,59 +1,111 @@
-#sign_up_form,.sign_up_form_2,#login_form,.login_form_2{
-    width:33%;
-    float:left;
-    height:400px;
-    margin-top:20%;
-    border:1px solid #ddd;
-    background-color:#fff;
-    padding:40px;
-    height:400px;
-    margin-left:5%;
-}
-#login_form{
-    margin-top:20%;
-    height:200px;
-}
-.sign_up_form_2,.login_form_2{
-    height:10px;
-    margin-top:2%;
-    padding:30px 10px 40px 70px;
-}
-#sign_up_form table,#login_form table{
-    text-align:center;
-    width:100%;
-    height:400px;
-}
-#login_form table{
-    height:150px;
-}
-#sign_up_form h2,#login_form h2{
-    width:175px;
-    height:51px;
-   background:url("../img/icon.png") no-repeat right bottom;
-   background-position: 70% top;
-   margin:0 auto;
-}
-#sign_up_form input, #login_form input{
-    width:100%;
-    height:35px;
-    border:1px solid #eeeeef;
-    background-color:#fafafa;
-    border-radius:5px;
-}
-#sign_up_form a ,button{
-    display:inline-block;
-    background-color:#3c98ec;
-    border-radius:5px;
-    width:100%;
-    height:30px;
-    text-align:center;
-    color:#fff;
-    font-weight:bold;
-    font-size:15px;
-    border:none;
-    cursor:pointer;
-}
-footer p{
-    text-align:center;
-    color:#ddd;
-}
+        aside > div{
+            width:90%;
+            border:1px solid #eee;
+            background-color:#fff;
+            min-width: 300px;
+        }
+        .sign-up > div:first-child{
+            height:80%;
+        }
+        .login > div:first-child{
+            height:50%;
+          }
+        aside > div:last-child{
+            margin-top:5%;
+            height:15%;
+        }
+
+        article > div > img{
+            width:90%;
+        }
+        .logo > h1 {
+            width:175px;
+            height:51px;
+            background:url("../img/icon.png") no-repeat right bottom;
+            background-position: 70% top;
+            margin:0 auto;
+            margin-top:10%;
+        }
+        .sign-up form{
+            width: 100%;
+            height:70%;
+            margin-top:20px;
+        }
+        .login form{
+            width: 100%;
+            height:50%;
+            margin-top:20px;
+        }
+        form > table{
+            width:70%;
+            margin: 0 auto;
+            height:100%;
+        }
+        table  td > input{
+            width: 100%;
+            height: 35px;
+            border: 1px solid #eeeeef;
+            background-color: #fafafa;
+            border-radius: 5px;
+        }
+        table td > a , input[type="submit"]{
+            display: inline-block;
+            background-color: #3c98ec;
+            border-radius: 5px;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        aside div:last-child p{
+            text-align: center;
+        }
+        .login .login-text{
+            margin-top: 15px;
+        }
+        .sign-up .login-text {
+            margin-top:35px;
+        }
+        .test-text {
+            color:#b3b3b7;
+        }
+        footer{
+            height:5%;
+        }
+        footer > p{
+            text-align:center;
+            color:#ddd;
+        }
+        footer > p img{
+            width:20px;
+            height:20px;
+        }
+
+        @media (max-width:700px){
+            .phone-img{
+                display:none;
+            }
+            .sign-up{
+                width: 90%;
+                float: none;
+                margin: 0 auto;
+            }
+            header h1{
+                padding-top: 5px;
+                padding-left: 15px;
+
+            }
+            article{
+                height:100%;
+               width:100%;
+               margin-top:0px;
+
+            }
+            aside> div{
+                margin:0 auto;
+            }
+        }

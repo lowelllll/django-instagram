@@ -4,28 +4,34 @@
 {% static 'css/sign_up_login.css' %}
 {% endblock %}
 {% block content %}
-<div id="login_form">
-    <h2></h2>
-    <table>
-        <form action="." method="post">{% csrf_token %}
-            <tr>
-                <td><input type="text" id="id_username" name="username" placeholder="username" required></td>
-            </tr>
-            <tr>
-                <td><input type="password" id="id_password" name="password" placeholder="password" required></td>
-            </tr>
-            <tr>
-                <td><button type="submit">로그인</button></td>
-            </tr>
-            </form>
-        {% if forms.errors %}
-            <script>
-                alert("로그인에 실패했습니다. 다시 입력해주세요.");
-            </script>
-        {% endif %}
-    </table>
-</div>
-<div class="login_form_2">
-    계정이 없으신가요? <a href="{% url 'main' %}">가입하기</a>
-</div>
+<aside class="login">
+                    <div>
+                        <div class="logo">
+                            <h1></h1>
+                        </div>
+                         <form action="." method="post">{% csrf_token %}
+                             {% if form.errors %}
+                             <script>alert("로그인 실패.아이디와 비밀번호를 다시 입력해주세요.");</script>
+                             {% endif %}
+                            <table>
+
+                                <tr>
+                                    <td><input type="text" id="id_username" name="username" placeholder="username" required></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="password" id="id_password" name="password" placeholder="password" required></td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="submit" value="로그인"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div>
+                        <p class="login-text"> 계정이 없으신가요? <a href="{% url 'main' %}">가입하기</a></p>
+                        <p class="test-text">테스트 계정 아이디 : test </p>
+                        <p class="test-text">비밀번호 : test1234 </p>
+                    </div>
+                </aside>
 {% endblock %}

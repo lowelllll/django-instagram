@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>instagram</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'css/base_main.css' %}">
@@ -9,23 +10,23 @@
 </head>
 <body>
 {% if user.is_anonymous %}
-<div id="wrap">
-    <header>
-        <h1><a href="{% url 'main' %}">Instagram</a></h1>
-    </header>
-    <section>
-        <article>
-            <div class="iphone">
-                <img src="{% static 'img/iphone.png' %}" alt="iphone">
-            </div>
-    {% block content %}
-    {% endblock %}
-        </article>
-    </section>
-    <footer>
-        <p>made by Leeyejin</p>
-    </footer>
-</div>
+ <div id="wrap">
+        <header>
+            <h1><a href="{% url 'main' %}">Instagram</a></h1>
+        </header>
+        <section>
+            <article>
+                <div class="phone-img">
+                    <img src="{% static 'img/iphone.PNG' %}" alt="iphone">
+                </div>
+                    {% block content %}
+                    {% endblock %}
+            </article>
+        </section>
+        <footer>
+            <p>made by leeyejin &nbsp;<a href="https://github.com/lowelllll"><img src="{% static 'img/logo.png' %}" alt="git-logo"></a></p>
+        </footer>
+    </div>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="{% static 'js/common.js' %}"></script>
     <script>
@@ -39,3 +40,7 @@
         location.href={% url 'post:post_list' %};
     </script>
 {% endif %}
+
+
+
+

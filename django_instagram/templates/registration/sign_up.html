@@ -4,48 +4,47 @@
 {% static 'css/sign_up_login.css' %}
 {% endblock %}
 {% block content %}
-<div id="sign_up_form">
-    <table>
-        <tr>
-            <td><h2></h2></td>
-        </tr>
-        <tr>
-            <td><a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a></td>
-        </tr>
-        <tr>
-            <td>
-                <hr>
-            </td>
-        </tr>
-        <form action="." method="post">{% csrf_token %}
-        <tr>
-            <td><label for="id_email"><input type="email" id="id_email" name="email" required placeholder="email"></label><br></td>
-        </tr>
-        <tr>
-            <td><label for="id_last_name"><input type="text" id="id_last_name" name="last_name" required placeholder="name"></label><br></td>
-        </tr>
-        <tr>
-            <td><label for="id_username"><input type="text" id="id_username" name="username" required placeholder="username"></label><br></td>
-        </tr>
-        <tr>
-            <td><label for="id_password1"><input type="password" id="id_password1" minlength="8" name="password1" required placeholder="password1(more 8 character)"></label><br></td>
-        </tr>
-        <tr>
-            <td><label for="id_password2"><input type="password" id="id_password2" minlength="8" name="password2" required placeholder="password2(more 8 character)"></label><br></td>
-        </tr>
-        <tr>
-            <td><button type="submit" value="가입" id="input_submit">가입</button></td>
-        </tr>
-        </form>
-    </table>
-        {% if form.errors %}
-            <script>
-                alert("가입에 실패했습니다. 다시 입력해주세요.");
-            </script>
-        {% endif %}
-</form>
-    </div>
-<div class="sign_up_form_2">
-   <p>계정이 있으신가요?<a href="{% url 'account:login' %}">로그인</a></p>
-</div>
+ <aside class="sign-up">
+                    <div>
+                        <div class="logo">
+                            <h1></h1>
+                        </div>
+                       <form action="." method="post">{% csrf_token %}
+                           {% if form.errors %}
+                             <script>alert("입력 오류. 다시 입력해주세요.");</script>
+                            {{ form.errors }}
+                           {% endif %}
+                            <table>
+                                <tr>
+                                    <td><a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a></td>
+                                </tr>
+                                <tr>
+                                    <td><hr></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="email" id="id_email" name="email" required placeholder="email"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" id="id_last_name" name="last_name" required placeholder="name"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" id="id_username" name="username" required placeholder="username"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="password" id="id_password1" minlength="8" name="password1" required placeholder="password1(more 8 character)"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="password" id="id_password2" minlength="8" name="password2" required placeholder="password2(more 8 character)"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit" value="가입"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div>
+                        <p class="login-text">계정이 있으신가요? <a href="{% url 'account:login' %}">로그인</a></p>
+                    </div>
+                </aside>
 {% endblock %}
+
