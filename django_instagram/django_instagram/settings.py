@@ -138,8 +138,8 @@ AUTHENTICATION_BACKENDS = (
     # 'social_core.backends.github.GithubOAuth2',  # for Github authentication
     'django.contrib.auth.backends.ModelBackend',
 )
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '142669161263-vi7r4qbvnep0a5n87svmvs1pd518j9jj.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Gltd2bYsLtX1tCOlniDriOun'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = get_secret("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = get_secret("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 
 AUTH_USER_MODEL = 'auth.User'
 # Internationalization
@@ -163,6 +163,8 @@ LOGOUT_REDIRECT_URL = '/'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 MEDIA_URL = '/media/'
 
