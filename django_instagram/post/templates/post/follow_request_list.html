@@ -19,16 +19,17 @@
 {% endblock %}
 {% block javascript %}
 // 팔로우 기능
-$("#follow").on("click",function(){
+$(".un_follow").on("click",function(){
+    $this = $(this);
     var user = $(this).attr("value");
     var url = "{% url 'post:follow' 1234 %}".replace(/1234/,user);
     $.ajax({
-    url:url,
-    dataType:'json',
-    success: function(data){
-        $("#follow").text(data.message_kr);
-        $("#follow").attr("class",data.message);
-    }
+        url:url,
+        dataType:'json',
+        success: function(data){
+            $this.text(data.message_kr);
+            $this.attr("class",data.message);
+        }
 });
 });
 {% endblock %}
